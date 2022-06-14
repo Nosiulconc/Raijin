@@ -22,19 +22,19 @@ unsigned int char_len(unsigned char* l){
 }
 
 void clearc(unsigned int x){
-    unsigned char* a=(unsigned char*)0xB8000+x*2;
+    unsigned char* a=(unsigned char*)0xB8000+(x<<1);
     *a=0x20;
 }
 
 void clearl(unsigned int y){
-    unsigned int x=y*80;
+    unsigned int x=(y<<6)+(y<<4);
     for(unsigned int i=0; i<=80; i++){
         clearc(x+i);
     }
 }
 
 void printc(unsigned char c, unsigned int x){
-    unsigned char* a=(unsigned char*)0xB8000+x*2;
+    unsigned char* a=(unsigned char*)0xB8000+(x<<1);
     *a=c;
 }
 
